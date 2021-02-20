@@ -144,7 +144,7 @@ function alertDisplay(array) {
 
    if (array.length === 0) {
       alertMessage.style.color = 'red';
-      alertMessage.textContent = 'No results found';
+      alertMessage.textContent = 'No Results Found. Please Try Searching Again.';
    } else {
       alertMessage.textContent = '';
    }
