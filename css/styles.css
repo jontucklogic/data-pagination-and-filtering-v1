@@ -24,8 +24,6 @@ ul {
   width: 95%;
 }
 
-
-
 header {
   text-align: center;
 	display: flex;
@@ -42,8 +40,6 @@ header h2 {
   letter-spacing: 2px;
 	margin-bottom: 25px;
 }
-
-
 
 .student-search {
   display: flex;
@@ -76,8 +72,6 @@ header h2 {
 .student-search button img {
   width: 25px;
 }
-
-
 
 .student-list {
   display: grid;

@@ -1,20 +1,11 @@
 /*
-Treehouse Techdegree:
-FSJS Project 2 - Data Pagination and Filtering
+Treehouse Techdegree: FSJS Project 2 - Data Pagination and Filtering
 */
 
-
-
-/*
-For assistance:
-   Check out the "Project Resources" section of the Instructions tab: https://teamtreehouse.com/projects/data-pagination-and-filtering#instructions
-   Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
-*/
-
-// Header variable
+// header variable
 const header = document.querySelector('.header');
 
-// Search bar
+// search bar
 const searchBar = `
    <label for="search" class="student-search">
       <p id="alert-message"></p>
@@ -25,24 +16,23 @@ const searchBar = `
 
 header.insertAdjacentHTML('beforeend', searchBar);
 
-
-// Number of students to display at any given time
+// number of students to display at any given time
 const perPage = 9;
 
 /*
-Create the `showPage` function
-This function will create and insert/append the elements needed to display a "page" of nine students
+create the showPage function. 
+this function will create and insert/append the elements needed to display a "page" of nine students
 */
 function showPage(list, page) {
-   // Variables to represent the index of the first and last student on the current page
+   // variables to represent the index of the first and last student on the current page
    const startIndex = (page * perPage) - perPage;
    const endIndex = (page * perPage);
 
-   // Select student list UL from the DOM and reset it to an empty string
+   // select student list UL from the DOM and reset it to an empty string
    const studentList = document.querySelector('.student-list');
    studentList.innerHTML = '';
 
-   // Loop through the student objects and rendering each student and their details to the UI
+   // loop through the student objects and rendering each student and their details to the UI
    for (let i = 0; i < list.length; i++) {
       if (i >= startIndex && i < endIndex) {
          const studentItem = `
@@ -57,26 +47,23 @@ function showPage(list, page) {
                </div>
             </li>
          `;
-
          studentList.insertAdjacentHTML('beforeend', studentItem);
       }
    }
 }
 
-
 /*
-Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
+create the addPagination function. This function will create and insert/append the elements needed for the pagination buttons
 */
 function addPagination(list) {
-   // Determine the number of pages needed in order to display all students
+   // determine the number of pages needed in order to display all students
    const numOfPages = Math.ceil(list.length / perPage);
 
-   // Selecting the pagination list UL from the DOM and reset it to an empty string
+   // selecting the pagination list UL from the DOM and reset it to an empty string
    const linkList = document.querySelector('.link-list');
    linkList.innerHTML = '';
 
-   // Loop through and determine how many buttons should be displayed based on the value of 'numOfPages'
+   // loop through and determine how many buttons should be displayed based on the value of 'numOfPages'
    for (let i = 1; i <= numOfPages; i++) {
       const button = `
          <li>
@@ -89,7 +76,7 @@ function addPagination(list) {
       linkList.querySelector('button').className = 'active';
    }
 
-   // Click event listener on all buttons to add and remove active class
+   // click event listener on all buttons to add and remove active class
    linkList.addEventListener('click', (e) => {
       const target = e.target;
 
@@ -102,12 +89,11 @@ function addPagination(list) {
    })
 }
 
-
-// Search DOM Variables
+// search DOM Variables
 const searchInput = document.querySelector('#search');
 const searchBtn = document.querySelector('#search-btn');
 
-// Search student function
+// search student function
 function searchStudent() {
    const userValue = searchInput.value.toLowerCase();
    const filteredStudents = [];
@@ -122,46 +108,46 @@ function searchStudent() {
          }
       }
 
-      // Call functions and update students displayed as well as the pagination
+      // call functions and update students displayed as well as the pagination
       showPage(filteredStudents, 1);
       addPagination(filteredStudents);
 
-      // Alert message when no students have been found from search
+      // alert message when no students have been found from search
       alertDisplay(filteredStudents);
 
    } else {
 
-      // Display all students if search field is empty
+      // display all students if search field is empty
       showPage(data, 1);
       addPagination(data);
    }
 
 }
 
-// Alert function
+// alert function
 function alertDisplay(array) {
    const alertMessage = document.querySelector('#alert-message');
 
    if (array.length === 0) {
       alertMessage.style.color = 'red';
-      alertMessage.textContent = 'No Results Found. Please Try Searching Again.';
+      alertMessage.textContent = 'No Results Found. Please Try Again.';
    } else {
       alertMessage.textContent = '';
    }
 }
 
-// 'keyup' event to search student
+// keyup event to search student
 searchInput.addEventListener('keyup', () => {
    searchStudent();
 })
 
-// 'click' event to search student
+// click event to search student
 searchBtn.addEventListener('click', (e) => {
    e.preventDefault();
 
    searchStudent();
 })
 
-// Call functions
+// call functions
 showPage(data, 1);
 addPagination(data);
