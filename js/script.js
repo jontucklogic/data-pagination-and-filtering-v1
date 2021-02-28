@@ -114,6 +114,7 @@ function searchStudent() {
 
       // alert message when no students have been found from search
       alertDisplay(filteredStudents);
+      
 
    } else {
 
@@ -121,7 +122,6 @@ function searchStudent() {
       showPage(data, 1);
       addPagination(data);
    }
-
 }
 
 // alert function
@@ -129,8 +129,7 @@ function alertDisplay(array) {
    const alertMessage = document.querySelector('#alert-message');
 
    if (array.length === 0) {
-      alertMessage.style.color = 'red';
-      alertMessage.textContent = 'No Results Found. Please Try Again.';
+      alert("No Results Found. Please Try Again.");
    } else {
       alertMessage.textContent = '';
    }
