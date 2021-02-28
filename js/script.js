@@ -131,7 +131,7 @@ function alertDisplay(array) {
    if (array.length === 0) {
       alert("No Results Found. Please Try Again.");
    } else {
-      alertMessage.textContent = '';
+      alertMessage.textContent = "";
    }
 }
 
